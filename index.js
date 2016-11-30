@@ -53,7 +53,7 @@ app.get('/logout', function(request, response)
 	if (request.session.user_id !=null) 
 	{
     	text = 'logged out';
-		delete req.session.user_id;
+		request.session.user_id = null;
   	}
 	else
 	{
