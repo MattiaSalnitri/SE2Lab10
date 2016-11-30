@@ -8,7 +8,7 @@ var session = require('express-session')
 app.set('port', (process.env.PORT || 5000));
 
 //use sessions
-app.use(session());
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 app.get('/', function(request, response) 
 {
