@@ -31,7 +31,7 @@ app.get('/login', function(request, response)
 {
 	var text = "";
 	
-	if (typeof(session) != 'undefined' & !request.session.user_id) 
+	if (!request.session.user_id) 
 	{
     	text = 'You are already logged in';
   	}
@@ -50,7 +50,7 @@ app.get('/logout', function(request, response)
 {
 	var text = "";
 	
-	if (typeof(session) != 'undefined' & !request.session.user_id) 
+	if (!request.session.user_id) 
 	{
     	text = 'logged out';
 		delete req.session.user_id;
