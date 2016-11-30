@@ -1,0 +1,23 @@
+{
+  "name": "heroku_first",
+  "version": "1.0.0",
+  "description": "first app on heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiaSalnitri/SE2Lab5.git"
+  },
+  "author": "Mattia Salnitri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattiaSalnitri/SE2Lab5/issues"
+  },
+  "homepage": "https://github.com/MattiaSalnitri/SE2Lab5#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
