@@ -40,6 +40,7 @@ app.get('/login', function(request, response)
 	
 	if (request.session.user_id != null) 
 	{
+		console.log("session: " +  request.session.user_id);
     	text = 'You are already logged in';
   	}
 	else
