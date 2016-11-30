@@ -2,10 +2,13 @@
 var express = require('express');
 //general lib
 var app = express();
+//manages sessions
+var session = require('express-session')
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.cookieParser());
-app.use(express.session());
+
+//use sessions
+app.use(session());
 
 app.get('/', function(request, response) 
 {
