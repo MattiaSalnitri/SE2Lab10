@@ -14,16 +14,15 @@ app.get('/', function(request, response)
 {
 	var text = "";
 	
-	if (typeof(session) != 'undefined' & !request.session.user_id) 
-	{
-    	text = 'You are not authorized to view this page';
-		response.writeHead(401, {'Content-Type': 'text/html'});	
-  	}
-	else
-	{
+	if (request.session.user_id) {
 		text = 'Hello ' + request.session.user_id;
 		response.writeHead(200, {'Content-Type': 'text/html'});	
 	}
+	else {
+    	text = 'You are not authorized to view this page';
+		response.writeHead(401, {'Content-Type': 'text/html'});	
+  	}
+	
     response.end(text);
   	
 });
