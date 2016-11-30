@@ -9,6 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 
 //use sessions
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+app.set('trust proxy', 1) // trust first proxy 
 
 app.get('/', function(request, response) 
 {
