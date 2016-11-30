@@ -14,7 +14,7 @@ app.get('/', function(request, response)
 {
 	var text = "";
 	
-	if (request.session.user_id) {
+	if (request.session.user_id!=null) {
 		text = 'Hello ' + request.session.user_id;
 		response.writeHead(200, {'Content-Type': 'text/html'});	
 	}
@@ -31,7 +31,7 @@ app.get('/login', function(request, response)
 {
 	var text = "";
 	
-	if (request.session.user_id) 
+	if (request.session.user_id != null) 
 	{
     	text = 'You are already logged in';
   	}
@@ -50,7 +50,7 @@ app.get('/logout', function(request, response)
 {
 	var text = "";
 	
-	if (request.session.user_id) 
+	if (request.session.user_id !=null) 
 	{
     	text = 'logged out';
 		delete req.session.user_id;
