@@ -9,7 +9,7 @@ app.get('/', function(request, response)
 {
 	var text = "";
 	
-	if (!request.session.user_id) 
+	if (typeof(session) != 'undefined' & !request.session.user_id) 
 	{
     	text = 'You are not authorized to view this page';
 		response.writeHead(401, {'Content-Type': 'text/html'});	
@@ -27,7 +27,7 @@ app.get('/login', function(request, response)
 {
 	var text = "";
 	
-	if (!request.session.user_id) 
+	if (typeof(session) != 'undefined' & !request.session.user_id) 
 	{
     	text = 'You are already logged in';
   	}
@@ -46,7 +46,7 @@ app.get('/logout', function(request, response)
 {
 	var text = "";
 	
-	if (!request.session.user_id) 
+	if (typeof(session) != 'undefined' & !request.session.user_id) 
 	{
     	text = 'logged out';
 		delete req.session.user_id;
