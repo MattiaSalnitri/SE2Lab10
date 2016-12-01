@@ -22,14 +22,14 @@ app.get('/', function(request, response)
 	var text = "";
 	
 	if (request.session.user_id!=null) {
-		text = 'Hello ' + request.session.user_id;
-		response.writeHead(200, {'Content-Type': 'text/html'});	
+		text = 'Hello ' + request.session.user_id;		
 	}
 	else {
     	text = 'You are not authorized to view this page';
-		response.writeHead(401, {'Content-Type': 'text/html'});	
+		//response.writeHead(401, {'Content-Type': 'text/html'});	
   	}
 	
+	response.writeHead(200, {'Content-Type': 'text/html'});	
     response.end(text);
   	
 });
@@ -47,7 +47,7 @@ app.get('/login', function(request, response)
 	{
 		text = 'logged in';
 		request.session.user_id = "Mattia";
-    	response.redirect('/my_secret_page');
+    	//response.redirect('/my_secret_page');
 		
 	}
 	response.writeHead(200, {'Content-Type': 'text/html'});	
