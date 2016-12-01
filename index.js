@@ -9,9 +9,8 @@ app.set('port', (process.env.PORT || 5000));
 
 //use sessions
 app.use(session({ 
-	secret: 'keyboard cat', 
-	resave: false,
-  	saveUninitialized: true,
+	//required, used to prevent tampering
+	secret: 'string for the hash', 
 	cookie: { maxAge: 60000 }
 }));
 
@@ -40,7 +39,6 @@ app.get('/login', function(request, response)
 	
 	if (request.session.user_id != null) 
 	{
-		console.log("session: " +  request.session.user_id);
     	text = 'You are already logged in';
   	}
 	else
