@@ -11,32 +11,45 @@ app.set('port', (process.env.PORT || 5000));
 app.use(session({ 
 	//required, used to prevent tampering
 	secret: 'string for the hash', 
+	//set time of validity of cookies
 	cookie: { maxAge: 60000 }
 }));
 
-app.set('trust proxy', 1) // trust first proxy 
+//app.set('trust proxy', 1) // trust first proxy 
 
+/**
+ * @brief main page, it will check if the user is logged in and print his name
+ * @return a page with greetings to user if he/she is logged in, a page with a string that notify the user that he/so is not ogged in yet
+ */
 app.get('/', function(request, response) 
 {
 	var text = "";
 	
+	//check if the session exists
 	if (request.session.user_id!=null) {
+		//print the greetings with the content of the session
 		text = 'Hello ' + request.session.user_id;		
 	}
 	else {
     	text = 'You are not authorized to view this page';
-		//response.writeHead(401, {'Content-Type': 'text/html'});	
   	}
 	
+	
+	//write response
 	response.writeHead(200, {'Content-Type': 'text/html'});	
     response.end(text);
   	
 });
 
+/**
+ * @brief log in page, thia page will create a session if it is not present ( i.e. it will log in a user)
+ * @return a page with notification that auser is logged in, or a page which says that the user is already logged in.
+ */
 app.get('/login', function(request, response) 
 {
 	var text = "";
 	
+	//check if the session exists
 	if (request.session.user_id != null) 
 	{
     	text = 'You are already logged in';
@@ -48,14 +61,21 @@ app.get('/login', function(request, response)
     	//response.redirect('/my_secret_page');
 		
 	}
+	
+	//write response
 	response.writeHead(200, {'Content-Type': 'text/html'});	
     response.end(text);
 });
 
+/**
+ * @brief log out page
+ * @return a page with notification that user is logged out, or a page which says that the user is already logged out.
+ */
 app.get('/logout', function(request, response) 
 {
 	var text = "";
 	
+	//check if the session exists
 	if (request.session.user_id !=null) 
 	{
     	text = 'logged out';
@@ -66,6 +86,8 @@ app.get('/logout', function(request, response)
 		text = 'You are already logged out';
 		
 	}
+	
+	//write response
 	response.writeHead(200, {'Content-Type': 'text/html'});	
     response.end(text);
 });
